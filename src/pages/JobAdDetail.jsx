@@ -8,26 +8,28 @@ import FavoriteService from "../services/FavoriteService";
 import { toast } from "react-toastify";
 
 export default function JobAdDetail() {
+  console.log("1231312");
   let { id } = useParams();
 
   const {authItem} = useSelector(state => state.auth)
 
   const [jobAd, setJobAd] = useState({});
+
   let [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     let jobAdService = new JobAdService();
     let favoriteService = new FavoriteService();
-    jobAdService.getByJobAdId(id).then((result) => setJobAd(result.data.data));
+    jobAdService.getByJobAdId(id).then((result) => setJobAd(result.data.data.data));
     if(authItem[0].loggedIn===true && authItem[0].user.userType===1){
       favoriteService.getByCandidateId(authItem[0].user.id).then((result) => {
-        setFavorites(result.data.data.map((favoriteAd) => (
+        setFavorites(result.data.data.data.map((favoriteAd) => (
           favoriteAd.jobAd.id
         )))
       })
     }
   }, [id,authItem]);
-
+  
   const handleAddFavorites = (jobAdId) => {
     let favoriteService = new FavoriteService();
     favoriteService.addFavorite(authItem[0].user.id,jobAdId).then((result) => {
@@ -35,10 +37,10 @@ export default function JobAdDetail() {
       favorites.push(jobAdId)
       setFavorites([...favorites])
     }).catch((result) => {
-      toast.error(result.response.data.message)
+      toast.error(result.response.data.data.data.message)
     })
   }
-
+  console.log("sdasdsa1111: " + JSON.stringify(jobAd))
   return (
     <div>
       <Card fluid color={"black"}>
