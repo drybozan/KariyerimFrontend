@@ -48,15 +48,7 @@ export default function Footer() {
                 <Container>
                   © 2022 
                 </Container>
-                <Container>
-                 181001026 - Derya Bozan
-                </Container>
-                <Container>
-                182119010 - Niyazi Keklik
-                </Container>
-                <Container>
-                191001068 - Begüm Muşdal
-                </Container>
+              
               </Grid.Column>
             </Grid.Row>
           </Grid>
