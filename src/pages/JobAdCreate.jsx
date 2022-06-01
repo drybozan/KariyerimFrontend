@@ -48,7 +48,7 @@ export default function JobAdCreate() {
       jobAdService.add(values).then((result) => {
         toast.success(result.data.message)
       }).catch((result) => {
-        toast.error(result.response.data.message)
+        toast.error(result.response.data.data.data.message)
       })
       history.push("/jobads");
     },
@@ -65,10 +65,10 @@ export default function JobAdCreate() {
     let cityService = new CityService();
     let jobPositionService = new JobPositionService();
 
-    workTimeService.getWorkTimes().then((result) => setWorkTimes(result.data.data));
-    workPlaceService.getWorkPlaces().then((result) => setWorkPlaces(result.data.data));
-    cityService.getCitys().then((result) => setCities(result.data.data));
-    jobPositionService.getJobPositions().then((result) => setJobPositions(result.data.data));
+    workTimeService.getWorkTimes().then((result) => setWorkTimes(result.data.data.data));
+    workPlaceService.getWorkPlaces().then((result) => setWorkPlaces(result.data.data.data));
+    cityService.getCitys().then((result) => setCities(result.data.data.data));
+    jobPositionService.getJobPositions().then((result) => setJobPositions(result.data.data.data));
   }, []);
 
   const workTimeOption = workTimes.map((workTime, index) => ({

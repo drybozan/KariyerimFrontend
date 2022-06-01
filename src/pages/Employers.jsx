@@ -10,7 +10,7 @@ export default function Employers() {
     let employerService = new EmployerService();
     employerService
       .getEmployers()
-      .then((result) => setEmployers(result.data.data));
+      .then((result) => setEmployers(result.data.data.data));
   }, []);
 
   return (

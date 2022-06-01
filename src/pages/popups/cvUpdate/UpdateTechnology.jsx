@@ -14,7 +14,7 @@ export default function UpdateTechnology({ cvId, updateCvValues }) {
   useEffect(() => {
     let technologyService = new TechnologyService();
     technologyService.getByCvId(cvId).then((result) => {
-      setTechnologies(result.data.data);
+      setTechnologies(result.data.data.data);
     });
   },[cvId]);
 
@@ -36,12 +36,12 @@ export default function UpdateTechnology({ cvId, updateCvValues }) {
         .then((result) => {
           toast.success(result.data.message)
           technologyService.getByCvId(cvId).then((result) => {
-            setTechnologies(result.data.data)
+            setTechnologies(result.data.data.data)
           })
           updateCvValues();
         })
         .catch((result) => {
-          toast.error(result.response.data.message)
+          toast.error(result.response.data.data.data.message)
         });
     },
   });
@@ -50,11 +50,11 @@ export default function UpdateTechnology({ cvId, updateCvValues }) {
       technologyService.deleteSchool(technologyId).then((result) => {
           toast.success(result.data.message)
           technologyService.getByCvId(cvId).then((result) => {
-            setTechnologies(result.data.data)
+            setTechnologies(result.data.data.data)
           })
           updateCvValues();
       }).catch((result) => {
-          toast.error(result.response.data.message)
+          toast.error(result.response.data.data.data.message)
       })
   }
 

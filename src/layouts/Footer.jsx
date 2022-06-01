@@ -16,11 +16,11 @@ export default function Footer() {
         inverted
         vertical
         style={{
-          padding: "5em 0em",
+          padding: "3em 0em",
           position: "static",
           bottom: 0,
           width: "100%",
-          marginTop: "2em"
+          marginTop: "2em",
         }}
       >
         <Container>
@@ -46,7 +46,16 @@ export default function Footer() {
                   </Header.Content>
                 </Header>
                 <Container>
-                  © 2021 db System - Tüm hakları gizlidir
+                  © 2022 
+                </Container>
+                <Container>
+                 181001026 - Derya Bozan
+                </Container>
+                <Container>
+                182119010 - Niyazi Keklik
+                </Container>
+                <Container>
+                191001068 - Begüm Muşdal
                 </Container>
               </Grid.Column>
             </Grid.Row>

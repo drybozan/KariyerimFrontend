@@ -17,7 +17,7 @@ export default function JobAdFavorites() {
     useEffect(() => {
         let favoriteService = new FavoriteService();
         favoriteService.getByCandidateId(authItem[0].user.id).then((result) => {
-            setFavoriteAds(result.data.data);
+            setFavoriteAds(result.data.data.body.data);
         })
     },[authItem])
 
@@ -26,7 +26,7 @@ export default function JobAdFavorites() {
             setFavoriteAds(favoriteAds.filter((favoriAd) => favoriAd.id !== favoriteId))
             toast.success(result.data.message)
         }).catch((result) => {
-            toast.error(result.response.data.message)
+            toast.error(result.response.data.data.data.message)
         })
     }
 
@@ -59,7 +59,7 @@ export default function JobAdFavorites() {
                                     <Table.Cell>{favoriteAd.jobAd.workPlace.name}</Table.Cell>
                                     <Table.Cell>
                                         {(
-                                        (new Date(favoriteAd.jobAd.lastDate).getTime() -
+                                        (new Date(favoriteAd.jobAd.lastDate.year, favoriteAd.jobAd.lastDate.monthValue, favoriteAd.jobAd.lastDate.dayOfMonth).getTime() -
                                             new Date(Date.now()).getTime()) /
                                         86400000
                                         )

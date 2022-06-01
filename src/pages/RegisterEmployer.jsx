@@ -54,7 +54,7 @@ export default function RegisterEmployer() {
         toast.success(result.data.message)
         history.push("/login")
       }).catch((result) => {
-        toast.error(result.response.data.message)
+        toast.error(result.response.data.data.data.message)
       })
     }
   });

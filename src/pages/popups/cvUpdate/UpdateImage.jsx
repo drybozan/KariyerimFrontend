@@ -29,7 +29,7 @@ export default class UpdateImage extends Component {
         this.props.updateCvValues();
       })
       .catch((result) => {
-        toast.error(result.response.data.message);
+        toast.error(result.response.data.data.data.message);
       });
   };
 

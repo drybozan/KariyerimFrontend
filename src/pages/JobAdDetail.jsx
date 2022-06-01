@@ -23,7 +23,7 @@ export default function JobAdDetail() {
     jobAdService.getByJobAdId(id).then((result) => setJobAd(result.data.data.data));
     if(authItem[0].loggedIn===true && authItem[0].user.userType===1){
       favoriteService.getByCandidateId(authItem[0].user.id).then((result) => {
-        setFavorites(result.data.data.data.map((favoriteAd) => (
+        setFavorites(result.data.data.body.data.map((favoriteAd) => (
           favoriteAd.jobAd.id
         )))
       })
@@ -182,12 +182,12 @@ export default function JobAdDetail() {
 
                 <Table.Row>
                   <Table.Cell>Yayınlanma Tarihi</Table.Cell>
-                  <Table.Cell>{jobAd.createDate}</Table.Cell>
+                  <Table.Cell>{jobAd?.lastDate?.dayOfMonth+ '/' +jobAd?.lastDate?.month +'/'+jobAd?.lastDate?.year}</Table.Cell>
                 </Table.Row>
 
                 <Table.Row>
                   <Table.Cell>Son Başvuru Tarihi</Table.Cell>
-                  <Table.Cell>{jobAd.lastDate}</Table.Cell>
+                  <Table.Cell>{jobAd?.lastDate?.dayOfMonth+ '/' +jobAd?.lastDate?.month +'/'+jobAd?.lastDate?.year }</Table.Cell>
                 </Table.Row>
               </Table.Body>
             </Table>

@@ -9,7 +9,7 @@ import SingedOut from "./SingedOut";
 export default function Navi() {
 
   const {authItem} = useSelector(state => state.auth)
-
+  console.log("DETASS :" +  authItem[0])
   return (
     <div>
       <Menu size="large" inverted stackable color="grey">

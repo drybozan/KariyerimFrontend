@@ -32,10 +32,11 @@ export default function Login() {
     validationSchema: userLoginSchema,
     onSubmit:(values) => {
       userService.login(values).then((result) => {
-        handleLogin(result.data.data)
+        console.log(result + "nnnnnniyazi")
+        handleLogin(result.data.data.body.data)
         history.push("/")
       }).catch((result) => {
-        toast.error(result.response.data.message)
+        toast.error(result.data.data.body.data.message)
       })
     }
   })

@@ -47,7 +47,7 @@ export default function Register() {
         history.push("/login")
       })
       .catch((result) => {
-        toast.error(result.response.data.message)
+        toast.error(result.response.data.data.data.message)
       })      
     }
   });

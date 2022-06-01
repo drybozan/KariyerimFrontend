@@ -14,7 +14,7 @@ export default function UpdateSchools({cvId,updateCvValues}) {
   useEffect(() => {    
     let schoolService = new SchoolService();
     schoolService.getByCvId(cvId).then((result) => {
-      setSchools(result.data.data);
+      setSchools(result.data.data.data);
     });
   },[cvId]);
 
@@ -38,11 +38,11 @@ export default function UpdateSchools({cvId,updateCvValues}) {
       schoolService.addScholl(values).then((result) => {
         toast.success(result.data.message)
         schoolService.getByCvId(cvId).then((result) => {
-          setSchools(result.data.data);
+          setSchools(result.data.data.data);
         })
         updateCvValues();
       }).catch((result) => {
-        toast.error(result.response.data.message)
+        toast.error(result.response.data.data.data.message)
       })
     }
   })
@@ -51,11 +51,11 @@ export default function UpdateSchools({cvId,updateCvValues}) {
     schoolService.deleteSchool(schoolId).then((result) =>{
       toast.success(result.data.message);
       schoolService.getByCvId(cvId).then((result) => {
-        setSchools(result.data.data)
+        setSchools(result.data.data.data)
       })
       updateCvValues();
     }).catch((result) => {
-      toast.error(result.response.data.message)
+     // toast.error(result.response.data.data.data.message)
     })
   }
 
@@ -80,8 +80,8 @@ export default function UpdateSchools({cvId,updateCvValues}) {
               <Table.Row key={school.id}>
                 <Table.Cell>{school.name}</Table.Cell>
                 <Table.Cell>{school.department}</Table.Cell>
-                <Table.Cell>{school.startDate}</Table.Cell>
-                <Table.Cell>{school.endDate}</Table.Cell>
+                <Table.Cell>{school.startDate.dayOfMonth + '/' + school.startDate.month +'/'+school.startDate.year}</Table.Cell>
+                <Table.Cell>{school.endDate.dayOfMonth + '/' + school.endDate.month +'/'+school.endDate.year}</Table.Cell>
                 <Table.Cell>
                   <Button color="red" onClick={() => handleDeleteScholl(school.id)}>
                     <Icon name="x" />

@@ -14,16 +14,16 @@ export default function JobAdFilter({ clickEvent}) {
 
     useEffect(() => {
         let cityService = new CityService()
-        cityService.getCitys().then(result => setCities(result.data.data))
+        cityService.getCitys().then(result => setCities(result.data.data.data))
 
         let jobPositionService = new JobPositionService()
-        jobPositionService.getJobPositions().then(result => setJobPositions(result.data.data))
+        jobPositionService.getJobPositions().then(result => setJobPositions(result.data.data.data))
 
         let workPlaceService = new WorkPlaceService()
-        workPlaceService.getWorkPlaces().then(result => setWorkPlaces(result.data.data))
+        workPlaceService.getWorkPlaces().then(result => setWorkPlaces(result.data.data.data))
 
         let workTimeService = new WorkTimeService();
-        workTimeService.getWorkTimes().then(result => setWorkTimes(result.data.data))
+        workTimeService.getWorkTimes().then(result => setWorkTimes(result.data.data.data))
     },[])
 
     const [cityIndex, setCityIndex] = useState([])

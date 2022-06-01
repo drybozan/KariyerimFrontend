@@ -19,10 +19,10 @@ export default function UpdateLinkedin({cvId,updateCvValues}) {
         validationSchema: updateGithubSchema,
         onSubmit:(values) =>{
             cvService.updateLinkedin(cvId,values.linkedin).then((result) =>{
-                toast.success(result.data.message)
+                //toast.success(result.data.message)
                 updateCvValues();
             }).catch((result) => {
-                toast.error(result.response.data.message)
+                //toast.error(result.response.data.data.data.message)
             })
         }
     })

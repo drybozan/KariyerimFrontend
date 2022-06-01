@@ -15,7 +15,8 @@ export default function UpdateLanguage({ cvId, updateCvValues }) {
   useEffect(() => {
     let languageService = new LanguageService();
     languageService.getByCvId(cvId).then((result) => {
-      setLanguages(result.data.data);
+      console.log("SJDJDJJ: " + result);
+      setLanguages(result.data.data.data);
     });
   },[cvId]);
 
@@ -42,12 +43,12 @@ export default function UpdateLanguage({ cvId, updateCvValues }) {
         .then((result) => {
           toast.success(result.data.message);
           languageService.getByCvId(cvId).then((result) => {
-            setLanguages(result.data.data)
+            setLanguages(result.data.data.data)
           })
           updateCvValues();
         })
         .catch((result) => {
-          toast.error(result.response.data.message)
+          toast.error(result.response.data.data.data.message)
         });
     },
   });
@@ -67,11 +68,11 @@ export default function UpdateLanguage({ cvId, updateCvValues }) {
       languageService.deleteLanguage(languageId).then((result) => {
           toast.success(result.data.message)
           languageService.getByCvId(cvId).then((result) => {
-            setLanguages(result.data.data)
+            setLanguages(result.data.data.data)
           })
           updateCvValues();
       }).catch((result) => {
-          toast.error(result.response.data.message)
+         // toast.error(result.response.data.data.data.message)
       })
   }
 

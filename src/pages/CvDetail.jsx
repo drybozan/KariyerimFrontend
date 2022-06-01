@@ -25,7 +25,9 @@ export default function CvDetail() {
   let cvService = new CvService();
   useEffect(() => { 
     let cvService = new CvService();   
-    cvService.getByCandidateId(id).then((result) => setCv(result.data.data));
+    cvService.getByCandidateId(id).then((result) => {
+      console.log(result);
+      setCv(result.data.data.body.data)});
   }, [id]);
 
   let myProfile = false;
@@ -40,7 +42,7 @@ export default function CvDetail() {
       toast.success(result.data.message)
       updateCvValues();
     }).catch((result) => {
-      toast.error(result.response.data.message)
+      toast.error(result.response.data.data.body.data.message)
     })
   }
 
@@ -49,17 +51,17 @@ export default function CvDetail() {
       toast.success(result.data.message)
       updateCvValues();
     }).catch((result) => {
-      alert(result.response.data.message)
-      toast.warning(result.response.data.message)
+      alert(result.response.data.data.data.message)
+      toast.warning(result.response.data.data.body.data.message)
     })
   }
 
   const updateCvValues = () => {
     cvService.getByCandidateId(id).then((result) => {
-      setCv(result.data.data)
+      setCv(result.data.data.body.data)
     })
   }
-
+  console.log("sadasd: " + JSON.stringify(cv.candidate))
   return (
     <div>
       <Card.Group>
@@ -80,7 +82,7 @@ export default function CvDetail() {
                     <Table.HeaderCell>Bilgiler</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-
+            
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
@@ -106,7 +108,7 @@ export default function CvDetail() {
                         <Header.Content>Doğum Tarihi</Header.Content>
                       </Header>
                     </Table.Cell>
-                    <Table.Cell>{cv.candidate?.dateOfBirth}</Table.Cell>
+                    {<Table.Cell>{cv.candidate?.dateOfBirth?.dayOfMonth + "/" +cv.candidate?.dateOfBirth?.month + "/" + cv.candidate?.dateOfBirth?.year}</Table.Cell>}
                   </Table.Row>
 
                   <Table.Row>
@@ -210,8 +212,8 @@ export default function CvDetail() {
               <Table.Row key={school.id}>
                 <Table.Cell>{school.name}</Table.Cell>
                 <Table.Cell>{school.department}</Table.Cell>
-                <Table.Cell>{school.startDate}</Table.Cell>
-                <Table.Cell>{school.endDate ? school.endDate:<p>Devam Ediyor</p>}</Table.Cell>
+                 <Table.Cell>{school.startDate.dayOfMonth + "/" +school.startDate.month + "/" + school.startDate.year} </Table.Cell>
+                <Table.Cell>{school.endDate ? school.endDate.dayOfMonth + "/" +school.endDate.month + "/" + school.endDate.year:<p>Devam Ediyor</p>}</Table.Cell> 
               </Table.Row>
             ))}
           </Table.Body>
@@ -240,8 +242,8 @@ export default function CvDetail() {
               <Table.Row key={experiance.id}>
                 <Table.Cell>{experiance.companyName}</Table.Cell>
                 <Table.Cell>{experiance.position}</Table.Cell>
-                <Table.Cell>{experiance.startDate}</Table.Cell>
-                <Table.Cell>{experiance.endDate ? experiance.endDate:<p>Devam Ediyor</p>}</Table.Cell>
+                <Table.Cell>{experiance.startDate.dayOfMonth + "/" +experiance.startDate.month + "/" + experiance.startDate.year}</Table.Cell>
+                <Table.Cell>{experiance.endDate ? experiance.endDate.dayOfMonth + "/" +experiance.endDate.month + "/" + experiance.endDate.year:<p>Devam Ediyor</p>}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

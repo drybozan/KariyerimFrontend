@@ -19,10 +19,10 @@ export default function UptadeGithub({cvId,updateCvValues}) {
         validationSchema: updateGithubSchema,
         onSubmit:(values) =>{
             cvService.updateGithub(cvId,values.github).then((result) =>{
-                toast.success(result.data.message)
+                //toast.success(result.data.data.body.data.message)
                 updateCvValues();
             }).catch((result) => {
-                toast.error(result.response.data.message)
+                //toast.error(result.response.data.data.message)
             })
         }
     })

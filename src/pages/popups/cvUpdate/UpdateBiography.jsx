@@ -20,10 +20,10 @@ export default function UpdateBiography({cvId,updateCvValues}) {
         validationSchema: updateBiographySchema,
         onSubmit:(values) =>{
             cvService.updateBiography(cvId,values.biography).then((result) =>{
-                toast.success(result.data.message)
+               // toast.success(result.data.message)
                 updateCvValues();
             }).catch((result) => {
-                toast.error(result.response.data.message)
+                //toast.error(result.response.data.data.data.message)
             })
         }
     })

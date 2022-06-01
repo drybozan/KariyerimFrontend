@@ -8,7 +8,14 @@ export default function Cvs() {
 
   useEffect(() => {
     let cvService = new CvService();
-    cvService.getCvs().then((result) => setCvs(result.data.data));
+    cvService.getCvs().then((result) => {
+
+     var x = setCvs(result.data.data.data);
+     console.log("sadadadasdas : " + x);
+      return x;
+
+    });
+
   }, []);
 
   return (
@@ -17,8 +24,6 @@ export default function Cvs() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>İş Arayan</Table.HeaderCell>
-            <Table.HeaderCell>Teknolojiler</Table.HeaderCell>
-            <Table.HeaderCell>Diller</Table.HeaderCell>
             <Table.HeaderCell>Github</Table.HeaderCell>
             <Table.HeaderCell>Linkedin</Table.HeaderCell>
             <Table.HeaderCell>Detaylar</Table.HeaderCell>
@@ -34,22 +39,12 @@ export default function Cvs() {
                   <Header.Content>
                     {cv.candidate.firstName + " " + cv.candidate.lastName}
                     <Header.Subheader>
-                      {cv.candidate.dateOfBirth}
+                      {cv.candidate.dateOfBirth.dayOfMonth + "/" +cv.candidate.dateOfBirth.month + "/" + cv.candidate.dateOfBirth.year}
                     </Header.Subheader>
                   </Header.Content>
                 </Header>
               </Table.Cell>
-              <Table.Cell>
-                {cv.technologies.map((tech) => (
-                  <p key={tech.id}>{tech.name}</p>
-                ))}
-              </Table.Cell>
-
-              <Table.Cell>
-                {cv.languages.map((lang) => (
-                  <p key={lang.id}>{lang.name + " Seviye: " + lang.level}</p>
-                ))}
-              </Table.Cell>
+             
 
               <Table.Cell>
                 <a href={cv.github} target={"_blank"} rel="noopener noreferrer">

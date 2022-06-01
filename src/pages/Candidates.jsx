@@ -10,7 +10,7 @@ export default function Candidates() {
     let candidateService = new CandidateService();
     candidateService
       .getCandidates()
-      .then((result) => setCandidates(result.data.data));
+      .then((result) => setCandidates(result.data.data.data));
   }, []);
 
   return (
@@ -21,7 +21,7 @@ export default function Candidates() {
                 <Card key={candidate.id} fluid color={"black"}>
                 <Card.Content>
                   <Card.Header>{candidate.firstName+" "+candidate.lastName}</Card.Header>
-                  <Card.Meta>{candidate.dateOfBirth}</Card.Meta>
+                  <Card.Meta>{candidate.dateOfBirth?.dayOfMonth + "/" +candidate.dateOfBirth?.month + "/" + candidate.dateOfBirth?.year}</Card.Meta>
                   <Card.Description>
                     {candidate.email}
                   </Card.Description>

@@ -15,7 +15,7 @@ export default function UpdateExperiance({cvId,updateCvValues}) {
     useEffect(() => {
         let experianceService = new ExperianceService();
         experianceService.getByCvId(cvId).then((result) => {
-            setExperiances(result.data.data)
+            setExperiances(result.data.data.data)
         })
     },[cvId])
 
@@ -39,11 +39,11 @@ export default function UpdateExperiance({cvId,updateCvValues}) {
             experianceService.add(values).then((result) => {
                 toast.success(result.data.message)
                 experianceService.getByCvId(cvId).then((result) => {
-                    setExperiances(result.data.data)
+                    setExperiances(result.data.data.data)
                 })
                 updateCvValues();
             }).catch((result) => {
-                toast.error(result.response.data.message)
+                toast.error(result.response.data.data.data.message)
             })
         }
     })
@@ -52,11 +52,11 @@ export default function UpdateExperiance({cvId,updateCvValues}) {
         experianceService.delete(experianceId).then((result) => {
             toast.success(result.data.message);
             experianceService.getByCvId(cvId).then((result) => {
-                setExperiances(result.data.data)
+                setExperiances(result.data.data.data)
             })
             updateCvValues();
         }).catch((result) => {
-            toast.error(result.response.data.message)
+            //toast.error(result.response.data.data.body.data.message)
         })
     }
 
@@ -79,8 +79,8 @@ export default function UpdateExperiance({cvId,updateCvValues}) {
                         <Table.Row key={experiance.id}>
                             <Table.Cell>{experiance.companyName}</Table.Cell>
                             <Table.Cell>{experiance.position}</Table.Cell>
-                            <Table.Cell>{experiance.startDate}</Table.Cell>
-                            <Table.Cell>{experiance.endDate ? experiance.endDate:<p>Devam ediyor</p>}</Table.Cell>
+                            <Table.Cell>{experiance.startDate.dayOfMonth + '/' + experiance.startDate.month +'/'+experiance.startDate.year}</Table.Cell>
+                            <Table.Cell>{experiance.endDate ? experiance.endDate.dayOfMonth + '/' + experiance.endDate.month +'/'+experiance.endDate.year:<p>Devam ediyor</p>}</Table.Cell>
                             <Table.Cell>
                             <Button color="red" onClick={() => handleDeleteExperiance(experiance.id)}>
                                 <Icon name="x" />

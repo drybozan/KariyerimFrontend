@@ -20,7 +20,7 @@ export default function JobAds() {
   let [favorites, setFavorites] = useState([]);
 
   const {authItem} = useSelector(state => state.auth)
-
+  console.log("bbbeggg: " + JSON.stringify(authItem[0]))
   let [activePage, setActivePage] = useState(1);
   let [filterOption, setFilterOption] = useState({});
   let [pageSize, setPageSize] = useState(2);
@@ -31,12 +31,14 @@ export default function JobAds() {
     let favoriteService = new FavoriteService();
     jobAdService.getPageableAndFilterJobPostings(activePage, pageSize, filterOption)
     .then((result) => {
-      setJobAds(result.data.data);
+      setJobAds(result.data.data.data);
       setTotalPageSize(parseInt(result.data.message));
     });
+
     if(authItem[0].loggedIn===true && authItem[0].user.userType===1){
+
       favoriteService.getByCandidateId(authItem[0].user.id).then((result) => {
-        setFavorites(result.data.data.map((favoriteAd) => (
+        setFavorites(result.data.data.body.data.map((favoriteAd) => (
           favoriteAd.jobAd.id
         )))
       })
@@ -71,7 +73,7 @@ export default function JobAds() {
       favorites.push(jobAdId)
       setFavorites([...favorites])
     }).catch((result) => {
-      toast.error(result.response.data.message)
+      toast.error(result.response.data.data.data.message)
     })
   }
 
@@ -87,7 +89,7 @@ export default function JobAds() {
     { key:50, text: "50 İlan", value: 50 },
     { key:100, text: "100 İlan", value: 100 },
   ];
-
+  console.log("sdasdsa1111: " + JSON.stringify(jobAds));
   return (
     <div>
       <JobAdFilter clickEvent={handleFilterClick}/>
@@ -125,9 +127,8 @@ export default function JobAds() {
               <Table.Cell>{jobAd.workPlace.name}</Table.Cell>
               <Table.Cell>
                 {(
-                  (new Date(jobAd.lastDate).getTime() -
-                    new Date(Date.now()).getTime()) /
-                  86400000
+                  (new Date(jobAd.lastDate.year, jobAd.lastDate.monthValue, jobAd.lastDate.dayOfMonth).getTime() -
+                    new Date(Date.now()).getTime()) /86400000
                 )
                   .toString()
                   .split(".", 1)}{" "}
@@ -154,13 +155,13 @@ export default function JobAds() {
         </Table.Body>
       </Table>
       
-      <Pagination
+      {/* <Pagination
         firstItem={null}
         lastItem={null}
         activePage={activePage}
         onPageChange={handlePaginationChange}
         totalPages={Math.ceil(totalPageSize / pageSize)}
-      />
+      /> */}
 
       <Dropdown
           onChange={(e, data) => {

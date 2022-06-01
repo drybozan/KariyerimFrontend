@@ -16,10 +16,10 @@ export default function EmployerDetail() {
     let jobAdService = new JobAdService();
     employerService
       .getEmployerById(id)
-      .then((result) => setEmployer(result.data.data));
+      .then((result) => setEmployer(result.data.data.data));
     jobAdService
       .getActiveAdsByCompanyId(id)
-      .then((result) => setJobAds(result.data.data));
+      .then((result) => setJobAds(result.data.data.data));
   },[id]);
 
   return (
