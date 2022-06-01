@@ -1,0 +1,16 @@
+# KariyerimFrontend
+![image](https://user-images.githubusercontent.com/86890722/171438785-c75d0ae7-ce2e-463f-9b46-879c58f00ef9.png)
+![image](https://user-images.githubusercontent.com/86890722/171438860-6f64fed0-8704-4459-be0c-f999a3049d2c.png)
+![image](https://user-images.githubusercontent.com/86890722/171438929-7443099a-d6f4-4e82-9a77-56c923254b24.png)
+![image](https://user-images.githubusercontent.com/86890722/171439349-a4ea9f24-70d2-4443-adb1-223968284f86.png)
+![image](https://user-images.githubusercontent.com/86890722/171439431-e7d06b81-70aa-470e-bb0f-8f5b46cd3be1.png)
+![image](https://user-images.githubusercontent.com/86890722/171439505-49041e5b-8623-43a2-959b-00f602eed428.png)
+![image](https://user-images.githubusercontent.com/86890722/171439579-95d1463b-f57c-4802-8f0e-7afc3ccbb1e1.png)
+![image](https://user-images.githubusercontent.com/86890722/171439678-36a93ebf-b759-499c-a415-20547c08b393.png)
+![image](https://user-images.githubusercontent.com/86890722/171439735-309cb3c1-9248-4158-ad4b-13d86e2351a3.png)
+![image](https://user-images.githubusercontent.com/86890722/171439786-a65b84ab-1d7f-4470-a261-100beb29d6c2.png)
+![image](https://user-images.githubusercontent.com/86890722/171439887-90056dc7-2e5a-4117-9228-2bfd0785a2e8.png)
+![image](https://user-images.githubusercontent.com/86890722/171439967-66457039-a362-450d-b2ec-40523a87864f.png)
+![image](https://user-images.githubusercontent.com/86890722/171440038-45820e58-0b0a-432a-a723-b35f545f042a.png)
+![image](https://user-images.githubusercontent.com/86890722/171440090-ada5ed47-b09d-45df-8848-49735b78b797.png)
+
